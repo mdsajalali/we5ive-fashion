@@ -5,6 +5,7 @@ import NewArrivals from "@/components/NewArrivals";
 import NewCollection from "@/components/NewCollection";
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
+import SummerProducts from "@/components/SummerProducts";
 
 export default function page() {
   return (
@@ -15,6 +16,7 @@ export default function page() {
       <NewArrivals />
       <NewCollection />
       <BigDeal />
+      <SummerProducts />
       <Footer />
     </>
   );

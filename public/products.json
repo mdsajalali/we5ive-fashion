@@ -28,5 +28,35 @@
     "img": "/products/hoodie.png",
     "product_name": "Indian Sharee",
     "price": "2,300"
+  },
+  {
+    "id": 6,
+    "img": "/products/hoodie.png",
+    "product_name": "Indian Sharee",
+    "price": "2,300"
+  },
+  {
+    "id": 7,
+    "img": "/products/hoodie.png",
+    "product_name": "Indian Sharee",
+    "price": "2,300"
+  },
+  {
+    "id": 8,
+    "img": "/products/hoodie.png",
+    "product_name": "Indian Sharee",
+    "price": "2,300"
+  },
+  {
+    "id": 9,
+    "img": "/products/hoodie.png",
+    "product_name": "Indian Sharee",
+    "price": "2,300"
+  },
+  {
+    "id": 10,
+    "img": "/products/hoodie.png",
+    "product_name": "Indian Sharee",
+    "price": "2,300"
   }
 ]
