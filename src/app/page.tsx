@@ -1,9 +1,12 @@
-import React from "react";
+import Footer from "@/components/shared/Footer";
+import Navbar from "@/components/shared/Navbar";
 
 export default function page() {
   return (
-    <div>
-      <h1 className="text-center text-2xl py-5 font-semibold">Welcome to We5ive Fashion</h1>
-    </div>
+    <>
+      <Navbar />
+      <h1 className="py-5 text-center">Content Here</h1>
+      <Footer />
+    </>
   );
 }
