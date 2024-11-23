@@ -71,12 +71,12 @@ export default function Navbar() {
 
             <div className="flex items-center gap-2">
               <Search className="text-gray-500" />
-              <div className="relative">
+              <Link href="/cart" className="relative">
                 <ShoppingBag className="text-2xl text-gray-700" />
                 <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-black text-xs text-white">
                   0
                 </span>
-              </div>
+              </Link>
               <User className="text-gray-500" />
             </div>
           </div>
