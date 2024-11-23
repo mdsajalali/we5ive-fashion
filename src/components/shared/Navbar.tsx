@@ -39,7 +39,7 @@ export default function Navbar() {
                 Home
               </Link>
               <Link
-                href="/"
+                href="/shops"
                 className="font-semibold text-[#646464] duration-300 hover:text-primary"
               >
                 Shop
