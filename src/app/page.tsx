@@ -1,3 +1,4 @@
+import Benefit from "@/components/Benefit";
 import BigDeal from "@/components/BigDeal";
 import Hero from "@/components/Hero";
 import Footer from "@/components/shared/Footer";
@@ -8,6 +9,7 @@ export default function page() {
     <>
       <Navbar />
       <Hero />
+      <Benefit />
       <BigDeal />
       <Footer />
     </>
