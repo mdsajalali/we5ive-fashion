@@ -34,25 +34,25 @@ export default function Navbar() {
             <ul className="flex items-center gap-4">
               <Link
                 href="/"
-                className="hover:text-primary duration-300 text-[#646464] font-semibold"
+                className="font-semibold text-[#646464] duration-300 hover:text-primary"
               >
                 Home
               </Link>
               <Link
                 href="/"
-                className="hover:text-primary duration-300 text-[#646464] font-semibold"
+                className="font-semibold text-[#646464] duration-300 hover:text-primary"
               >
                 Shop
               </Link>
               <Link
                 href="/"
-                className="hover:text-primary duration-300 text-[#646464] font-semibold"
+                className="font-semibold text-[#646464] duration-300 hover:text-primary"
               >
                 Deals
               </Link>
               <Link
                 href="/"
-                className="hover:text-primary duration-300 text-[#646464] font-semibold"
+                className="font-semibold text-[#646464] duration-300 hover:text-primary"
               >
                 What's New
               </Link>
@@ -60,20 +60,20 @@ export default function Navbar() {
           </div>
 
           {/* Search and Icons (Hidden on Mobile) */}
-          <div className="hidden lg:flex items-center gap-2">
-            <div className="bg-white flex items-center py-2 rounded-full w-[242px] shadow-sm">
+          <div className="hidden items-center gap-2 lg:flex">
+            <div className="flex w-[242px] items-center rounded-full bg-white py-2 shadow-sm">
               <Search className="ml-3 text-gray-500" />
               <input
                 type="text"
-                className="ml-2 flex-1 bg-transparent focus:outline-none text-gray-800 placeholder-gray-400"
+                className="ml-2 flex-1 bg-transparent text-gray-800 placeholder-gray-400 focus:outline-none"
               />
             </div>
 
             <div className="flex items-center gap-2">
               <Search className="text-gray-500" />
               <div className="relative">
-                <ShoppingBag className="text-gray-700 text-2xl" />
-                <span className="absolute -top-2 -right-2 w-5 h-5 bg-black text-white text-xs flex items-center justify-center rounded-full">
+                <ShoppingBag className="text-2xl text-gray-700" />
+                <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-black text-xs text-white">
                   0
                 </span>
               </div>
@@ -84,36 +84,36 @@ export default function Navbar() {
 
         {/* Sidebar for Mobile */}
         {isSidebarOpen && (
-          <div className="fixed inset-y-0 right-0 w-64 bg-white shadow-lg z-50">
+          <div className="fixed inset-y-0 right-0 z-50 w-64 bg-white shadow-lg">
             <div className="p-4">
               <button
                 className="mb-4 text-gray-700"
                 onClick={() => setIsSidebarOpen(false)}
               >
-                <X className="w-6 h-6" />
+                <X className="h-6 w-6" />
               </button>
               <ul className="space-y-4">
                 <Link
                   href="/"
-                  className="block text-[#646464] font-semibold hover:text-primary"
+                  className="block font-semibold text-[#646464] hover:text-primary"
                 >
                   Home
                 </Link>
                 <Link
                   href="/"
-                  className="block text-[#646464] font-semibold hover:text-primary"
+                  className="block font-semibold text-[#646464] hover:text-primary"
                 >
                   Shop
                 </Link>
                 <Link
                   href="/"
-                  className="block text-[#646464] font-semibold hover:text-primary"
+                  className="block font-semibold text-[#646464] hover:text-primary"
                 >
                   Deals
                 </Link>
                 <Link
                   href="/"
-                  className="block text-[#646464] font-semibold hover:text-primary"
+                  className="block font-semibold text-[#646464] hover:text-primary"
                 >
                   What's New
                 </Link>
