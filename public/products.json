@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "img": "/products/hoodie.png",
+    "product_name": "Indian Sharee",
+    "price": "2,300"
+  },
+  {
+    "id": 2,
+    "img": "/products/hoodie.png",
+    "product_name": "Indian Sharee",
+    "price": "2,300"
+  },
+  {
+    "id": 3,
+    "img": "/products/hoodie.png",
+    "product_name": "Indian Sharee",
+    "price": "2,300"
+  },
+  {
+    "id": 4,
+    "img": "/products/hoodie.png",
+    "product_name": "Indian Sharee",
+    "price": "2,300"
+  },
+  {
+    "id": 5,
+    "img": "/products/hoodie.png",
+    "product_name": "Indian Sharee",
+    "price": "2,300"
+  }
+]
