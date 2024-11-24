@@ -17,6 +17,7 @@ import Link from "next/link";
 
 const ProductDetails = ({ paramsId }: { paramsId: string }) => {
   const [product, setProduct] = useState<Product | null>(null);
+  const [cartQuantity, setCartQuantity] = useState(1);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -119,7 +120,7 @@ const ProductDetails = ({ paramsId }: { paramsId: string }) => {
             }}
           >
             <SwiperSlide>
-              <div className="relative size-[450px]">
+              <div className="relative aspect-square">
                 <Image
                   src={product?.img!}
                   alt="product"
@@ -129,7 +130,7 @@ const ProductDetails = ({ paramsId }: { paramsId: string }) => {
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="relative size-[450px]">
+              <div className="relative aspect-square">
                 <Image
                   src="/products/product_one.png"
                   alt="product"
@@ -139,7 +140,7 @@ const ProductDetails = ({ paramsId }: { paramsId: string }) => {
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="relative size-[450px]">
+              <div className="relative aspect-square">
                 <Image
                   src="/products/product_two.png"
                   alt="product"
@@ -149,7 +150,7 @@ const ProductDetails = ({ paramsId }: { paramsId: string }) => {
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="relative size-[450px]">
+              <div className="relative aspect-square">
                 <Image
                   src="/products/product_three.png"
                   alt="product"
@@ -273,13 +274,25 @@ const ProductDetails = ({ paramsId }: { paramsId: string }) => {
           <div className="py-7">
             <h1 className="pb-2 text-lg font-semibold">Quantity</h1>
             <div className="flex w-32 items-center rounded-full bg-[#ECE9FE]">
-              <button className="flex h-[54px] w-[38px] items-center justify-center">
+              <button
+                onClick={() =>
+                  setCartQuantity((prevQuantity) =>
+                    Math.max(1, prevQuantity - 1),
+                  )
+                }
+                className="flex h-[54px] w-[38px] items-center justify-center text-gray-500"
+              >
                 <Minus className="size-4" />
               </button>
               <span className="block min-w-12 text-center text-lg font-semibold">
-                0
+                {cartQuantity}
               </span>
-              <button className="flex h-[54px] w-[38px] items-center justify-center">
+              <button
+                onClick={() =>
+                  setCartQuantity((prevQuantity) => prevQuantity + 1)
+                }
+                className="flex h-[54px] w-[38px] items-center justify-center text-gray-500"
+              >
                 <Plus className="size-4" />
               </button>
             </div>

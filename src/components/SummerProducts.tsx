@@ -1,7 +1,7 @@
 "use client";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SliderArrowBtn from "./shared/SliderArrowBtn";
 import Container from "./shared/Container";
@@ -47,9 +47,11 @@ const SummerProducts = () => {
         </div>
         <div>
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation, Autoplay]}
             spaceBetween={35}
             slidesPerView={1}
+            loop={true}
+            autoplay={{ delay: 3000 }}
             navigation={{ prevEl: ".productPrev", nextEl: ".productNext" }}
             breakpoints={{
               350: {
@@ -82,9 +84,11 @@ const SummerProducts = () => {
           </Swiper>
           <div className="pt-10">
             <Swiper
-              modules={[Navigation]}
+              modules={[Navigation, Autoplay]}
               spaceBetween={35}
               slidesPerView={1}
+              loop={true}
+              autoplay={{ delay: 3000 }}
               navigation={{ prevEl: ".productPrev", nextEl: ".productNext" }}
               breakpoints={{
                 350: {

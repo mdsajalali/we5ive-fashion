@@ -3,7 +3,7 @@
     "id": 1,
     "img": "/products/saree.png",
     "product_name": "Indian Sharee",
-    "price": "2,300",
+    "price": "2300",
     "reviews": 120,
     "sizes": ["S", "L", "XL"]
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "img": "/products/pant.png",
     "product_name": "Pant",
-    "price": "3,000",
+    "price": "3000",
     "reviews": 5,
     "sizes": ["S", "M", "L", "XL"]
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "img": "/products/jacket.png",
     "product_name": "Jacket",
-    "price": "42,300",
+    "price": "42300",
     "reviews": 90,
     "sizes": ["S", "M"]
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "img": "/products/girl_clothes.png",
     "product_name": "Girl Clothes",
-    "price": "9,300",
+    "price": "9300",
     "up_to": "19",
     "reviews": 20,
     "sizes": ["S"]
@@ -53,7 +53,7 @@
     "id": 7,
     "img": "/products/royal_saree.png",
     "product_name": "Saree",
-    "price": "63,000",
+    "price": "63000",
     "up_to": "10",
     "reviews": 59,
     "sizes": ["S", "M", "L", "XL"]
@@ -62,7 +62,7 @@
     "id": 8,
     "img": "/products/shirt_boy.png",
     "product_name": "Boys Shirt",
-    "price": "22,300",
+    "price": "22300",
     "up_to": "50",
     "reviews": 900,
     "sizes": ["S", "M", "L"]
@@ -71,7 +71,7 @@
     "id": 9,
     "img": "/products/pant.png",
     "product_name": "Pant",
-    "price": "3,000",
+    "price": "3000",
     "reviews": 5,
     "sizes": ["S", "M", "L", "XL"]
   },
@@ -79,7 +79,7 @@
     "id": 10,
     "img": "/products/jacket.png",
     "product_name": "Jacket",
-    "price": "42,300",
+    "price": "42300",
     "reviews": 90,
     "sizes": ["S", "M"]
   }

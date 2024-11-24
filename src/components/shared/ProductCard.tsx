@@ -27,12 +27,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
     <div className="rounded-lg border bg-white p-2 shadow-sm transition-shadow hover:shadow-md">
       <Link href={`/shops/${product.id}`}>
         <div className="relative">
-          <div className="relative mx-auto h-[200px] w-[280px] rounded-md bg-secondary">
+          <div className="relative mx-auto aspect-square rounded-md bg-secondary">
             <Image
               src={product.img}
               alt={product.product_name}
               fill
-              className="object-content mx-auto h-full w-full"
+              className="mx-auto h-full w-full object-contain"
             />
           </div>
           <div className="mt-4 flex items-center justify-between px-2">

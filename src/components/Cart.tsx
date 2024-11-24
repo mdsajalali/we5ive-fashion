@@ -9,6 +9,7 @@ import { toast } from "sonner";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState<any[]>([]);
+  console.log(cartItems);
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
