@@ -4,18 +4,34 @@ import CartItem from "./CartItem";
 import CartCheckout from "./CartCheckout";
 import Link from "next/link";
 import Container from "./shared/Container";
-
-const cartItems = [
-  {
-    id: 1,
-    name: "Hoodie",
-    price: 30,
-    stock: 10,
-    image: "/products/hoodie.png",
-  },
-];
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const Cart = () => {
+  const [cartItems, setCartItems] = useState<any[]>([]);
+
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    setCartItems(storedCart);
+  }, []);
+
+  const handleRemove = (id: number) => {
+    const itemToRemove = cartItems.find((item) => item.id === id);
+    if (!itemToRemove) return;
+
+    const updatedCart = cartItems.filter((item) => item.id !== id);
+    setCartItems(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    toast.success(`${itemToRemove.product_name} removed successfully!`);
+  };
+
+  const handleClearCart = () => {
+    localStorage.removeItem("cart");
+    setCartItems([]);
+    toast.success("Cart cleared successfully!");
+  };
+
   return (
     <Container>
       <section className="py-16 md:py-20">
@@ -32,9 +48,19 @@ const Cart = () => {
               <h5 className="w-32">Subtotal</h5>
               <h5 className="w-20">Action</h5>
             </div>
-            {cartItems.map((product) => (
-              <CartItem key={product.id} product={product} />
-            ))}
+            {cartItems.length > 0 ? (
+              cartItems.map((product) => (
+                <CartItem
+                  key={product.id}
+                  product={product}
+                  onRemove={handleRemove}
+                />
+              ))
+            ) : (
+              <p className="py-5 text-center text-gray-500">
+                Your cart is empty!
+              </p>
+            )}
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
             <Link
@@ -43,10 +69,18 @@ const Cart = () => {
             >
               Continue Shopping
             </Link>
-            <button className="block bg-[#f2f2f2] px-5 py-3.5 font-semibold text-[#1f1f1f] duration-300 hover:bg-primary hover:text-white sm:ml-auto">
+
+            <Link
+              href="/shops"
+              className="block bg-[#f2f2f2] px-5 py-3.5 font-semibold text-[#1f1f1f] duration-300 hover:bg-primary hover:text-white sm:ml-auto"
+            >
               Update Cart
-            </button>
-            <button className="block bg-[#f2f2f2] px-5 py-3.5 font-semibold text-[#1f1f1f] duration-300 hover:bg-primary hover:text-white">
+            </Link>
+
+            <button
+              onClick={handleClearCart}
+              className="block bg-[#f2f2f2] px-5 py-3.5 font-semibold text-[#1f1f1f] duration-300 hover:bg-primary hover:text-white"
+            >
               Clear Cart
             </button>
           </div>

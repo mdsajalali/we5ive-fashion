@@ -1,7 +1,21 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { ShoppingBag } from "lucide-react";
 import Link from "next/link";
 
 const YourBag = () => {
+  const [totalQuantity, setTotalQuantity] = useState(0);
+
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const total = storedCart.reduce(
+      (sum: number, item: any) => sum + (item.quantity || 1),
+      0,
+    );
+    setTotalQuantity(total);
+  }, []);
+
   return (
     <Link
       href="/cart"
@@ -9,7 +23,7 @@ const YourBag = () => {
     >
       <ShoppingBag className="text-2xl" />
       <h1 className="pt-2">Your bag</h1>
-      <p>0</p>
+      <p>{totalQuantity}</p>
     </Link>
   );
 };

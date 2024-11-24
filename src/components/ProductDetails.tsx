@@ -12,11 +12,10 @@ import { Navigation } from "swiper/modules";
 import { Minus, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Product } from "@/types/index.type";
+import { toast } from "sonner";
 
 const ProductDetails = ({ paramsId }: { paramsId: string }) => {
   const [product, setProduct] = useState<Product | null>(null);
-
-  console.log(product);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -66,6 +65,13 @@ const ProductDetails = ({ paramsId }: { paramsId: string }) => {
     `h-6 w-6 rounded-full ${
       selectedColor === color ? "border-2 border-primary" : "border"
     } ${bgColor}`;
+
+  const handleAddToCart = (product: any) => {
+    const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+    const updatedCart = [...cartItems, product];
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    toast.success("Added to cart!");
+  };
 
   return (
     <Container>
@@ -267,7 +273,17 @@ const ProductDetails = ({ paramsId }: { paramsId: string }) => {
             <button className="mb-3 w-full rounded border border-primary px-4 py-2 transition-colors hover:bg-primary hover:text-white lg:mb-0 lg:w-1/2">
               Buy Now
             </button>
-            <button className="w-full rounded border border-primary px-4 py-2 transition-colors hover:bg-primary hover:text-white lg:w-1/2">
+            <button
+              onClick={() =>
+                handleAddToCart({
+                  id: product?.id,
+                  img: product?.img,
+                  product_name: product?.product_name,
+                  price: product?.price,
+                })
+              }
+              className="w-full rounded border border-primary px-4 py-2 transition-colors hover:bg-primary hover:text-white lg:w-1/2"
+            >
               Add to Cart
             </button>
           </div>

@@ -4,20 +4,23 @@ import Link from "next/link";
 import { toast } from "sonner";
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const handelProductId = (id: number) => {
-    console.log(id);
+  const handleAddToCart = (product: any) => {
+    const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+    const updatedCart = [...cartItems, product];
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
     toast.success("Added to cart!");
   };
+
   return (
     <div className="rounded-lg border bg-white p-2 shadow-sm transition-shadow hover:shadow-md">
       <Link href={`/shops/${product.id}`}>
         <div className="relative">
-          <div className="relative h-[200px] w-[280px] mx-auto rounded-md bg-secondary">
+          <div className="relative mx-auto h-[200px] w-[280px] rounded-md bg-secondary">
             <Image
               src={product.img}
               alt={product.product_name}
               fill
-              className="mx-auto w-full h-full object-content"
+              className="object-content mx-auto h-full w-full"
             />
           </div>
           <div className="mt-4 flex items-center justify-between px-2">
@@ -38,7 +41,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </Link>
 
       <button
-        onClick={() => handelProductId(product?.id)}
+        onClick={() =>
+          handleAddToCart({
+            id: product.id,
+            img: product.img,
+            product_name: product.product_name,
+            price: product.price,
+          })
+        }
         className="mt-4 w-full rounded border border-primary px-2 py-2 transition-colors hover:bg-primary hover:text-white"
       >
         Add to Cart

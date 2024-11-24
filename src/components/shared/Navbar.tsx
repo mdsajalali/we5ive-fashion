@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Container from "./Container";
 import Link from "next/link";
@@ -14,6 +14,17 @@ const NAV_ITEMS = [
 
 export default function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    const [totalQuantity, setTotalQuantity] = useState(0);
+
+    useEffect(() => {
+      const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const total = storedCart.reduce(
+        (sum: number, item: any) => sum + (item.quantity || 1),
+        0,
+      );
+      setTotalQuantity(total);
+    }, []);
 
   return (
     <nav className="bg-secondary py-3 lg:py-5">
@@ -95,7 +106,7 @@ export default function Navbar() {
               >
                 <ShoppingBag className="text-2xl text-gray-700" />
                 <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-black text-xs text-white">
-                  0
+                  {totalQuantity}
                 </span>
               </Link>
               <Image
