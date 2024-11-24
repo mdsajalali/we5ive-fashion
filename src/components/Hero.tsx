@@ -12,8 +12,10 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 px-6 text-center text-white md:px-12">
-        <h1 className="mb-4 text-4xl font-bold">Elevate Your Everyday Style</h1>
-        <p className="mb-6 text-lg">
+        <h1 className="mb-2 text-2xl font-bold md:mb-4 md:text-[48px]">
+          Elevate Your Everyday Style
+        </h1>
+        <p className="mb-4 text-[14px] md:mb-6 md:text-[19px]">
           Discover the Latest Trends in Sustainable Fashion
         </p>
         <div className="flex justify-center">

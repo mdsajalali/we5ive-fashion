@@ -9,11 +9,13 @@ export default function page() {
   return (
     <>
       <Hero />
-      <Benefit />
-      <NewArrivals />
-      <NewCollection />
-      <BigDeal />
-      <SummerProducts />
+      <div className="bg-[#F4F8FF]">
+        <Benefit />
+        <NewArrivals />
+        <BigDeal />
+        <NewCollection />
+        <SummerProducts />
+      </div>
     </>
   );
 }
