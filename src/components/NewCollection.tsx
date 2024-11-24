@@ -17,43 +17,41 @@ const NewCollection = () => {
           dynamicBullets: true,
         }}
         modules={[Navigation, Autoplay, Pagination]}
-        spaceBetween={35}
-        slidesPerView={"auto"}
+        spaceBetween={20}
+        slidesPerView={1}
         loop={true}
         speed={400}
         autoplay={{ delay: 3000 }}
       >
         <SwiperSlide>
-          <div className="flex flex-wrap items-center gap-10 py-[91px]">
-            <div className="h-[400px] w-[621px] bg-secondary">
-              <Image
-                src="/men_collection.png"
-                alt="men"
-                width={400}
-                height={400}
-                className="mx-auto -mt-[84px]"
-              />
-            </div>
-            <div>
-              <h1 className="pb-6 text-[48px] font-semibold">MEN COLLECTION</h1>
+          <div className="flex flex-col items-center gap-5 py-10 md:flex-row">
+            <Image
+              src="/man.png"
+              alt="Men Collection"
+              width={621}
+              height={566}
+              className="mx-auto w-full max-w-sm md:max-w-md lg:max-w-lg"
+            />
+            <div className="text-center md:text-left">
+              <h1 className="pb-6 text-2xl font-semibold md:text-4xl lg:text-[48px]">
+                MEN COLLECTION
+              </h1>
               <Button />
             </div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="flex flex-wrap items-center gap-10 py-[91px]">
-            <div className="h-[400px] w-[621px] bg-secondary">
-              <Image
-                src="/women_collection.png"
-                alt="women"
-                width={290}
-                height={200}
-                className="mx-auto -mt-[82px]"
-              />
-            </div>
-            <div>
-              <h1 className="pb-6 text-[48px] font-semibold">
-                Women COLLECTION
+          <div className="flex flex-col items-center gap-5 py-10 md:flex-row">
+            <Image
+              src="/women.png"
+              alt="Women Collection"
+              width={521}
+              height={466}
+              className="mx-auto w-full max-w-sm md:max-w-md lg:max-w-lg"
+            />
+            <div className="text-center md:text-left">
+              <h1 className="pb-6 text-2xl font-semibold md:text-4xl lg:text-[48px]">
+                WOMEN COLLECTION
               </h1>
               <Button />
             </div>

@@ -8,8 +8,10 @@ export default function BigDeal() {
       <div className="my-10 bg-secondary pt-10">
         <div className="flex flex-col items-center justify-between px-4 md:flex-row md:px-[64px]">
           <div className="text-center md:text-left">
-            <h1 className="text-xl font-thin md:text-2xl">Big Deal</h1>
-            <h2 className="pb-6 pt-2 text-4xl font-semibold md:text-[48px]">
+            <h1 className="text-xl font-bold md:text-2xl">
+              <i className="text-primary">Big Deal</i>
+            </h1>
+            <h2 className="pb-6 pt-2 text-3xl font-semibold md:text-4xl md:text-[48px]">
               <span className="text-primary">30%</span> Off for New Customers
             </h2>
             {/* Button */}
