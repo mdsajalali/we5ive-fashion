@@ -15,16 +15,30 @@ const NAV_ITEMS = [
 export default function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-    const [totalQuantity, setTotalQuantity] = useState(0);
+  const [totalQuantity, setTotalQuantity] = useState(0);
 
-    useEffect(() => {
-      const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-      const total = storedCart.reduce(
-        (sum: number, item: any) => sum + (item.quantity || 1),
-        0,
-      );
-      setTotalQuantity(total);
-    }, []);
+  const calculateTotalQuantity = () => {
+    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const total = storedCart.reduce(
+      (sum: number, item: any) => sum + (item.quantity || 1),
+      0,
+    );
+    setTotalQuantity(total);
+  };
+
+  useEffect(() => {
+    // Calculate initial quantity
+    calculateTotalQuantity();
+
+    // Listen for cart updates
+    const handleCartUpdate = () => calculateTotalQuantity();
+    window.addEventListener("cartUpdated", handleCartUpdate);
+
+    // Cleanup listener on component unmount
+    return () => {
+      window.removeEventListener("cartUpdated", handleCartUpdate);
+    };
+  }, []);
 
   return (
     <nav className="bg-secondary py-3 lg:py-5">

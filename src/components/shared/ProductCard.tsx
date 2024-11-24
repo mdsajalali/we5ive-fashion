@@ -4,10 +4,22 @@ import Link from "next/link";
 import { toast } from "sonner";
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const handleAddToCart = (product: any) => {
-    const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
-    const updatedCart = [...cartItems, product];
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  const handleAddToCart = (item: any) => {
+    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const existingItemIndex = storedCart.findIndex(
+      (cartItem: any) => cartItem.id === item.id,
+    );
+
+    if (existingItemIndex !== -1) {
+      storedCart[existingItemIndex].quantity += 1;
+    } else {
+      storedCart.push({ ...item, quantity: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(storedCart));
+
+    window.dispatchEvent(new Event("cartUpdated"));
+
     toast.success("Added to cart!");
   };
 

@@ -21,7 +21,10 @@ const Cart = () => {
 
     const updatedCart = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedCart);
+
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    window.dispatchEvent(new Event("cartUpdated"));
 
     toast.success(`${itemToRemove.product_name} removed successfully!`);
   };
@@ -29,6 +32,7 @@ const Cart = () => {
   const handleClearCart = () => {
     localStorage.removeItem("cart");
     setCartItems([]);
+    window.dispatchEvent(new Event("cartUpdated"));
     toast.success("Cart cleared successfully!");
   };
 

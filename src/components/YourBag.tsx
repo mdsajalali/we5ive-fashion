@@ -7,13 +7,24 @@ import Link from "next/link";
 const YourBag = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
 
-  useEffect(() => {
+  const calculateTotalQuantity = () => {
     const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
     const total = storedCart.reduce(
       (sum: number, item: any) => sum + (item.quantity || 1),
       0,
     );
     setTotalQuantity(total);
+  };
+
+  useEffect(() => {
+    calculateTotalQuantity();
+
+    const handleCartUpdate = () => calculateTotalQuantity();
+    window.addEventListener("cartUpdated", handleCartUpdate);
+
+    return () => {
+      window.removeEventListener("cartUpdated", handleCartUpdate);
+    };
   }, []);
 
   return (

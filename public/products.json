@@ -66,5 +66,21 @@
     "up_to": "50",
     "reviews": 900,
     "sizes": ["S", "M", "L"]
+  },
+  {
+    "id": 9,
+    "img": "/products/pant.png",
+    "product_name": "Pant",
+    "price": "3,000",
+    "reviews": 5,
+    "sizes": ["S", "M", "L", "XL"]
+  },
+  {
+    "id": 10,
+    "img": "/products/jacket.png",
+    "product_name": "Jacket",
+    "price": "42,300",
+    "reviews": 90,
+    "sizes": ["S", "M"]
   }
 ]
