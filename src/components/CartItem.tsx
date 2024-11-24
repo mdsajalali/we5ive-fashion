@@ -45,7 +45,7 @@ const CartItem: React.FC<CartItemProps> = ({ product }) => {
         ${(product.price * cartQuantity).toFixed(2)}
       </p>
       <div className="w-20">
-        <button className="mx-auto flex size-9 items-center justify-center rounded-full border duration-300 hover:bg-black hover:text-white">
+        <button className="mx-auto flex size-9 items-center justify-center rounded-full border duration-300 hover:bg-primary hover:text-white">
           <X className="size-5" />
         </button>
       </div>

@@ -3,10 +3,10 @@ const CartCheckout = () => {
     <div className="mt-8 flex flex-col items-start gap-x-8 gap-y-4 md:flex-row">
       <div className="flex w-full">
         <input
-          className="h-auto w-full rounded-none border-r-0 px-5 py-4 text-base placeholder:text-gray-400 sm:min-w-[200px] md:max-w-[260px]"
+          className="h-auto w-[182px] rounded-none border border-r-0 border-primary px-5 py-4 text-base outline-none placeholder:text-gray-400 sm:min-w-[200px] md:max-w-[260px]"
           placeholder="Enter coupon code..."
         />
-        <button className="block bg-[#1f1f1f] px-7 font-semibold text-white duration-300 hover:bg-[#FF2F2F] sm:text-nowrap md:text-wrap lg:text-nowrap">
+        <button className="block bg-primary px-7 font-semibold text-white duration-300 hover:bg-primary/50 sm:text-nowrap md:text-wrap lg:text-nowrap">
           Apply coupon
         </button>
       </div>
@@ -22,7 +22,7 @@ const CartCheckout = () => {
           <h4 className="font-semibold">Order Total:</h4>
           <p className="font-medium text-[#1f1f1f]">$150</p>
         </div>
-        <button className="block w-full bg-[#1f1f1f] py-[18px] font-semibold text-white duration-300 hover:bg-[#FF2F2F]">
+        <button className="block w-full bg-primary py-[18px] font-semibold text-white duration-300 hover:bg-primary/50">
           Proceed to Checkout
         </button>
       </div>

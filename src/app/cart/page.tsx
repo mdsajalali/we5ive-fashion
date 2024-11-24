@@ -2,7 +2,7 @@ import Cart from "@/components/Cart";
 
 export default function page() {
   return (
-    <div>
+    <div className="bg-secondary/50">
       <Cart />
     </div>
   );
