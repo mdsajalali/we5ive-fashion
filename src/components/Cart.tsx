@@ -88,7 +88,7 @@ const Cart = () => {
               Clear Cart
             </button>
           </div>
-          <CartCheckout />
+          <CartCheckout handleClearCart={handleClearCart} />
         </div>
       </section>
     </Container>

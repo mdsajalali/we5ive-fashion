@@ -13,6 +13,7 @@ import { Minus, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Product } from "@/types/index.type";
 import { toast } from "sonner";
+import Link from "next/link";
 
 const ProductDetails = ({ paramsId }: { paramsId: string }) => {
   const [product, setProduct] = useState<Product | null>(null);
@@ -281,9 +282,13 @@ const ProductDetails = ({ paramsId }: { paramsId: string }) => {
           </div>
 
           <div className="mt-5 flex flex-col gap-2 md:gap-5 lg:flex-row">
-            <button className="mb-3 w-full rounded border border-primary px-4 py-2 transition-colors hover:bg-primary hover:text-white lg:mb-0 lg:w-1/2">
+            <Link
+              href="/success"
+              className="mb-3 w-full rounded border border-primary px-4 py-2 text-center transition-colors hover:bg-primary hover:text-white lg:mb-0 lg:w-1/2"
+            >
               Buy Now
-            </button>
+            </Link>
+
             <button
               onClick={() =>
                 handleAddToCart({

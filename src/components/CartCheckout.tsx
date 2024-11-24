@@ -1,4 +1,6 @@
-const CartCheckout = () => {
+import Link from "next/link";
+
+const CartCheckout = ({ handleClearCart }: any) => {
   return (
     <div className="mt-8 flex flex-col items-start gap-x-8 gap-y-4 md:flex-row">
       <div className="flex w-full">
@@ -22,9 +24,12 @@ const CartCheckout = () => {
           <h4 className="font-semibold">Order Total:</h4>
           <p className="font-medium text-[#1f1f1f]">$150</p>
         </div>
-        <button className="block w-full bg-primary py-[18px] font-semibold text-white duration-300 hover:bg-primary/50">
-          Proceed to Checkout
-        </button>
+
+        <Link href="/success" onClick={handleClearCart}>
+          <button className="block w-full bg-primary py-[18px] font-semibold text-white duration-300 hover:bg-primary/50">
+            Proceed to Checkout
+          </button>
+        </Link>
       </div>
     </div>
   );
