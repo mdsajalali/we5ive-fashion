@@ -13,7 +13,7 @@ const ProductDetails = () => {
       <div className="flex flex-col gap-5 lg:flex-row">
         {/* Product Images */}
         <div className="lg:w-1/3">
-          <div className="bg-secondary">
+          <div className="rounded-md bg-secondary">
             <Image
               src="/products/product_four.png"
               alt="product"
@@ -22,34 +22,34 @@ const ProductDetails = () => {
               className="h-auto w-full"
             />
           </div>
-          <div className="my-5 flex gap-2">
+          <div className="my-5 lg:flex gap-2 hidden">
             <Image
               src="/products/product_one.png"
               alt="product"
               width={100}
               height={100}
-              className="w-[100px] bg-[#ECE9FE]"
+              className="w-[100px] rounded-md bg-[#ECE9FE]"
             />
             <Image
               src="/products/product_two.png"
               alt="product"
               width={100}
               height={100}
-              className="w-[100px] bg-[#ECE9FE]"
+              className="w-[100px] rounded-md bg-[#ECE9FE]"
             />
             <Image
               src="/products/product_three.png"
               alt="product"
               width={100}
               height={100}
-              className="w-[100px] bg-[#ECE9FE]"
+              className="w-[100px] rounded-md bg-[#ECE9FE]"
             />
             <Image
               src="/products/product_five.png"
               alt="product"
               width={100}
               height={100}
-              className="w-[100px] bg-[#ECE9FE]"
+              className="w-[100px] rounded-md bg-[#ECE9FE]"
             />
           </div>
         </div>

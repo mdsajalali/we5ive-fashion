@@ -7,7 +7,7 @@ const Reviews = () => {
   const [sortOption, setSortOption] = useState("Newest");
 
   return (
-    <div className="flex flex-col items-center bg-gray-100 py-8">
+    <div className="flex flex-col items-center py-8">
       <div className="w-full max-w-3xl">
         {/* Tab Navigation */}
         <div className="flex justify-between border-b border-gray-300">
@@ -29,7 +29,7 @@ const Reviews = () => {
         </div>
 
         {/* Tab Content */}
-        <div className="mt-6 rounded-lg bg-white p-6 shadow-md">
+        <div className="mt-6 p-6">
           {activeTab === "details" && <p>This is the Details content.</p>}
 
           {activeTab === "review&rating" && (

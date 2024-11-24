@@ -35,11 +35,11 @@ const RelatedProducts = () => {
   }, []);
 
   return (
-    <section className="py-24 lg:py-40">
+    <section className="pb-20 pt-10 lg:pb-[147px] lg:pt-20">
       <Container>
-        <div className="mb-10 flex items-end justify-between gap-2 lg:mb-20">
+        <div className="mb-10 flex items-center justify-between gap-2 lg:mb-20">
           <div>
-            <h3 className="mb-3 text-3xl font-bold leading-snug text-[#292929] lg:text-4xl xl:text-[40px]">
+            <h3 className="mb-3 text-2xl font-bold leading-snug text-black lg:text-4xl xl:text-[40px]">
               Related Products
             </h3>
           </div>
@@ -55,6 +55,10 @@ const RelatedProducts = () => {
             slidesPerView={1}
             navigation={{ prevEl: ".productPrev", nextEl: ".productNext" }}
             breakpoints={{
+              350: {
+                slidesPerView: 1.2,
+                spaceBetween: 10,
+              },
               640: {
                 slidesPerView: 2,
                 spaceBetween: 10,
@@ -79,8 +83,8 @@ const RelatedProducts = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="mt-5 flex justify-center">
-            <button className="rounded-md bg-primary px-5 py-2 text-white">
+          <div className="mt-6 flex justify-center">
+            <button className="rounded-md border bg-primary px-5 py-2 text-white duration-300 hover:border-primary hover:bg-transparent hover:text-black">
               See more
             </button>
           </div>

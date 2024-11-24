@@ -5,12 +5,14 @@ import YourBag from "@/components/YourBag";
 
 const ShopsPage = () => {
   return (
-    <>
-      <YourBag />
+    <div className="bg-[#F4F8FF]">
+      <div className="hidden xl:block">
+        <YourBag />
+      </div>
       <ProductDetails />
       <Reviews />
       <RelatedProducts />
-    </>
+    </div>
   );
 };
 
