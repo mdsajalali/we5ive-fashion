@@ -7,6 +7,7 @@ import SliderArrowBtn from "./shared/SliderArrowBtn";
 import Container from "./shared/Container";
 import { useEffect, useState } from "react";
 import ProductCard from "./shared/ProductCard";
+import Link from "next/link";
 
 interface Product {
   id: number;
@@ -86,11 +87,11 @@ const NewArrivals = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="mt-6 flex justify-center">
+          <Link href="/shops" className="mt-6 flex justify-center">
             <button className="rounded-md border bg-primary px-5 py-2 text-white duration-300 hover:border-primary hover:bg-transparent hover:text-black">
               See more
             </button>
-          </div>
+          </Link>
         </div>
       </Container>
     </section>

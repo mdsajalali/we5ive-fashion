@@ -1,19 +1,13 @@
-import ProductDetails from "@/components/ProductDetails";
-import RelatedProducts from "@/components/RelatedProducts";
-import Reviews from "@/components/Reviews";
-import YourBag from "@/components/YourBag";
+import NewArrivals from "@/components/NewArrivals";
+import SummerProducts from "@/components/SummerProducts";
 
-const ShopsPage = () => {
+export default function page() {
   return (
-    <div className="bg-[#F4F8FF]">
-      <div className="hidden xl:block">
-        <YourBag />
+    <div>
+      <div className="bg-[#F4F8FF]">
+        <NewArrivals />
+        <SummerProducts />
       </div>
-      <ProductDetails />
-      <Reviews />
-      <RelatedProducts />
     </div>
   );
-};
-
-export default ShopsPage;
+}
