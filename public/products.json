@@ -1,43 +1,70 @@
 [
   {
     "id": 1,
-    "img": "/products/hoodie.png",
+    "img": "/products/saree.png",
     "product_name": "Indian Sharee",
     "price": "2,300",
-    "up_to": "20"
+    "reviews": 120,
+    "sizes": ["S", "L", "XL"]
   },
   {
     "id": 2,
     "img": "/products/hoodie.png",
-    "product_name": "Indian Sharee",
-    "price": "2,300",
-    "up_to": "30"
+    "product_name": "Hoodie",
+    "price": "500",
+    "reviews": 220,
+    "sizes": ["S", "M", "XL"]
   },
   {
     "id": 3,
-    "img": "/products/hoodie.png",
-    "product_name": "Indian Sharee",
-    "price": "2,300",
-    "up_to": "10"
+    "img": "/products/pant.png",
+    "product_name": "Pant",
+    "price": "3,000",
+    "reviews": 5,
+    "sizes": ["S", "M", "L", "XL"]
   },
   {
     "id": 4,
-    "img": "/products/hoodie.png",
-    "product_name": "Indian Sharee",
-    "price": "2,300",
-    "up_to": "50"
+    "img": "/products/jacket.png",
+    "product_name": "Jacket",
+    "price": "42,300",
+    "reviews": 90,
+    "sizes": ["S", "M"]
   },
   {
     "id": 5,
-    "img": "/products/hoodie.png",
-    "product_name": "Indian Sharee",
-    "price": "2,300",
-    "up_to": "50"
+    "img": "/products/girl_clothes.png",
+    "product_name": "Girl Clothes",
+    "price": "9,300",
+    "up_to": "19",
+    "reviews": 20,
+    "sizes": ["S"]
   },
   {
     "id": 6,
-    "img": "/products/hoodie.png",
-    "product_name": "Indian Sharee",
-    "price": "2,300"
+    "img": "/products/shirt.png",
+    "product_name": "Shirt",
+    "price": "6500",
+    "up_to": "60",
+    "reviews": 620,
+    "sizes": ["S", "M"]
+  },
+  {
+    "id": 7,
+    "img": "/products/royal_saree.png",
+    "product_name": "Saree",
+    "price": "63,000",
+    "up_to": "110",
+    "reviews": 59,
+    "sizes": ["S", "M", "L", "XL"]
+  },
+  {
+    "id": 8,
+    "img": "/products/shirt_boy.png",
+    "product_name": "Boys Shirt",
+    "price": "22,300",
+    "up_to": "50",
+    "reviews": 900,
+    "sizes": ["S", "M", "L"]
   }
 ]

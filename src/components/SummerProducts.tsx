@@ -114,7 +114,7 @@ const SummerProducts = () => {
                 },
               }}
             >
-              {products.map((product) => (
+              {products?.slice(4, 8)?.map((product) => (
                 <SwiperSlide key={product.id}>
                   <ProductCard product={product} />
                 </SwiperSlide>

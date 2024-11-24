@@ -10,9 +10,38 @@ import "swiper/css/navigation";
 import SliderArrowBtn from "./shared/SliderArrowBtn";
 import { Navigation } from "swiper/modules";
 import { Minus, Plus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Product } from "@/types/index.type";
 
-const ProductDetails = () => {
+const ProductDetails = ({ paramsId }: { paramsId: string }) => {
+  const [product, setProduct] = useState<Product | null>(null);
+
+  console.log(product);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await fetch("/products.json");
+        if (!response.ok) {
+          throw new Error("Failed to fetch products");
+        }
+        const data: Product[] = await response.json();
+
+        const foundProduct = data.find((p) => p.id === Number(paramsId));
+        if (foundProduct) {
+          setProduct(foundProduct);
+        } else {
+          console.log("Product not found!");
+          setProduct(null);
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProduct();
+  }, [paramsId]);
+
   const [selectedSize, setSelectedSize] = useState<string | null>("S");
   const [selectedColor, setSelectedColor] = useState<string | null>(
     "Off White",
@@ -73,7 +102,7 @@ const ProductDetails = () => {
           >
             <SwiperSlide>
               <Image
-                src="/products/product_four.png"
+                src={product?.img!}
                 alt="product"
                 width={400}
                 height={400}
@@ -146,7 +175,9 @@ const ProductDetails = () => {
           <button className="rounded-md bg-[#2F1C59] px-8 py-[10px] text-sm text-white">
             New Arrival
           </button>
-          <h1 className="my-6 text-3xl font-semibold">White Hoodie</h1>
+          <h1 className="my-6 text-3xl font-semibold">
+            {product?.product_name}
+          </h1>
           <div className="flex items-center">
             <IoMdStar size={24} className="text-[#FFCF11]" />
             <IoMdStar size={24} className="text-[#FFCF11]" />
@@ -154,39 +185,28 @@ const ProductDetails = () => {
             <IoMdStar size={24} className="text-[#FFCF11]" />
             <CiStar size={24} className="text-gray-400" />
             <span className="font-semibold">(4.0)</span>
-            <h1 className="ml-2 text-lg text-primary">121 reviews</h1>
+            <h1 className="ml-2 text-lg text-primary">
+              {product?.reviews} reviews
+            </h1>
           </div>
-          <p className="my-2 pb-2 pt-2 text-xl font-semibold">BDT 2500</p>
+          <p className="my-2 pb-2 pt-2 text-xl font-semibold">
+            BDT {product?.price}
+          </p>
           <div className="my-3 border-b border-dashed" />
 
           <div className="flex flex-col items-start justify-between gap-5 lg:flex-row">
             <div>
               <h1 className="text-lg font-semibold">Available Size</h1>
               <div className="flex space-x-2 pt-2">
-                <button
-                  className={buttonClasses("S")}
-                  onClick={() => handleClick("S")}
-                >
-                  S
-                </button>
-                <button
-                  className={buttonClasses("M")}
-                  onClick={() => handleClick("M")}
-                >
-                  M
-                </button>
-                <button
-                  className={buttonClasses("L")}
-                  onClick={() => handleClick("L")}
-                >
-                  L
-                </button>
-                <button
-                  className={buttonClasses("XL")}
-                  onClick={() => handleClick("XL")}
-                >
-                  XL
-                </button>
+                {product?.sizes?.map((size) => (
+                  <button
+                    key={size}
+                    className={buttonClasses(size)}
+                    onClick={() => handleClick(size)}
+                  >
+                    {size}
+                  </button>
+                ))}
               </div>
             </div>
 

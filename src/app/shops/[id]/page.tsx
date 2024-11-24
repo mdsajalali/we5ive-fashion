@@ -2,14 +2,17 @@ import ProductDetails from "@/components/ProductDetails";
 import RelatedProducts from "@/components/RelatedProducts";
 import Reviews from "@/components/Reviews";
 import YourBag from "@/components/YourBag";
+import { ParamsProps } from "@/types/index.type";
 
-const ShopsPage = () => {
+const ShopsPage = ({ params }: ParamsProps) => {
+  const paramsId = params.id;
+
   return (
     <div className="bg-[#F4F8FF]">
       <div className="hidden xl:block">
         <YourBag />
       </div>
-      <ProductDetails />
+      <ProductDetails paramsId={paramsId} />
       <Reviews />
       <RelatedProducts />
     </div>

@@ -78,7 +78,7 @@ const RelatedProducts = () => {
               },
             }}
           >
-            {products.map((product) => (
+            {products?.slice(0, 4)?.map((product) => (
               <SwiperSlide key={product.id}>
                 <ProductCard product={product} />
               </SwiperSlide>
