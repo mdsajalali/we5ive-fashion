@@ -1,6 +1,16 @@
+import { useCartContext } from "@/context/CartContext";
 import Link from "next/link";
+import { toast } from "sonner";
 
-const CartCheckout = ({ handleClearCart }: any) => {
+const CartCheckout = () => {
+  const { totalCartPrice, clearCart } = useCartContext();
+
+  const handleClearCart = () => {
+    clearCart();
+
+    toast.success("Cart cleared successfully!");
+  };
+
   return (
     <div className="mt-8 flex flex-col items-start gap-x-8 gap-y-4 md:flex-row">
       <div className="flex w-full">
@@ -18,11 +28,11 @@ const CartCheckout = ({ handleClearCart }: any) => {
         </div>
         <div className="flex justify-between gap-10 border-b px-5 py-3.5">
           <h4 className="font-semibold">Subtotal:</h4>
-          <p className="font-medium text-[#848484]">$150</p>
+          <p className="font-medium text-[#848484]">${totalCartPrice}</p>
         </div>
         <div className="flex justify-between gap-10 px-5 py-3.5">
           <h4 className="font-semibold">Order Total:</h4>
-          <p className="font-medium text-[#1f1f1f]">$150</p>
+          <p className="font-medium text-[#1f1f1f]">${totalCartPrice}</p>
         </div>
 
         <Link href="/success" onClick={handleClearCart}>

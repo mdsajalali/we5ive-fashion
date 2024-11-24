@@ -1,31 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCartContext } from "@/context/CartContext";
 import { ShoppingBag } from "lucide-react";
 import Link from "next/link";
 
 const YourBag = () => {
-  const [totalQuantity, setTotalQuantity] = useState(0);
-
-  const calculateTotalQuantity = () => {
-    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const total = storedCart.reduce(
-      (sum: number, item: any) => sum + (item.quantity || 1),
-      0,
-    );
-    setTotalQuantity(total);
-  };
-
-  useEffect(() => {
-    calculateTotalQuantity();
-
-    const handleCartUpdate = () => calculateTotalQuantity();
-    window.addEventListener("cartUpdated", handleCartUpdate);
-
-    return () => {
-      window.removeEventListener("cartUpdated", handleCartUpdate);
-    };
-  }, []);
+  const { totalCartItems } = useCartContext();
 
   return (
     <Link
@@ -34,7 +14,7 @@ const YourBag = () => {
     >
       <ShoppingBag className="text-2xl" />
       <h1 className="pt-2">Your bag</h1>
-      <p>{totalQuantity}</p>
+      <p>{totalCartItems}</p>
     </Link>
   );
 };

@@ -1,39 +1,18 @@
 "use client";
 
-import CartItem from "./CartItem";
-import CartCheckout from "./CartCheckout";
+import { useCartContext } from "@/context/CartContext";
 import Link from "next/link";
-import Container from "./shared/Container";
-import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import CartCheckout from "./CartCheckout";
+import CartItem from "./CartItem";
+import Container from "./shared/Container";
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState<any[]>([]);
-  console.log(cartItems);
-
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    setCartItems(storedCart);
-  }, []);
-
-  const handleRemove = (id: number) => {
-    const itemToRemove = cartItems.find((item) => item.id === id);
-    if (!itemToRemove) return;
-
-    const updatedCart = cartItems.filter((item) => item.id !== id);
-    setCartItems(updatedCart);
-
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-
-    window.dispatchEvent(new Event("cartUpdated"));
-
-    toast.success(`${itemToRemove.product_name} removed successfully!`);
-  };
+  const { cart, clearCart } = useCartContext();
 
   const handleClearCart = () => {
-    localStorage.removeItem("cart");
-    setCartItems([]);
-    window.dispatchEvent(new Event("cartUpdated"));
+    clearCart();
+
     toast.success("Cart cleared successfully!");
   };
 
@@ -53,13 +32,9 @@ const Cart = () => {
               <h5 className="w-32">Subtotal</h5>
               <h5 className="w-20">Action</h5>
             </div>
-            {cartItems.length > 0 ? (
-              cartItems.map((product) => (
-                <CartItem
-                  key={product.id}
-                  product={product}
-                  onRemove={handleRemove}
-                />
+            {cart.length > 0 ? (
+              cart.map((product) => (
+                <CartItem key={product.id} product={product} />
               ))
             ) : (
               <p className="py-5 text-center text-gray-500">
@@ -67,19 +42,12 @@ const Cart = () => {
               </p>
             )}
           </div>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
             <Link
               href="/shops"
               className="block bg-[#f2f2f2] px-5 py-3.5 font-semibold text-[#1f1f1f] duration-300 hover:bg-primary hover:text-white"
             >
               Continue Shopping
-            </Link>
-
-            <Link
-              href="/shops"
-              className="block bg-[#f2f2f2] px-5 py-3.5 font-semibold text-[#1f1f1f] duration-300 hover:bg-primary hover:text-white sm:ml-auto"
-            >
-              Update Cart
             </Link>
 
             <button
@@ -89,7 +57,7 @@ const Cart = () => {
               Clear Cart
             </button>
           </div>
-          <CartCheckout handleClearCart={handleClearCart} />
+          <CartCheckout />
         </div>
       </section>
     </Container>

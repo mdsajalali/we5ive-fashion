@@ -1,21 +1,25 @@
 "use client";
-import Container from "./shared/Container";
-import Breadcrumbs from "./Breadcrumbs";
+import { useCartContext } from "@/context/CartContext";
+import { Product } from "@/types/index.type";
+import { Minus, Plus } from "lucide-react";
 import Image from "next/image";
-import { IoMdStar } from "react-icons/io";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { CiStar } from "react-icons/ci";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { IoMdStar } from "react-icons/io";
+import { toast } from "sonner";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import Breadcrumbs from "./Breadcrumbs";
+import Container from "./shared/Container";
 import SliderArrowBtn from "./shared/SliderArrowBtn";
-import { Navigation } from "swiper/modules";
-import { Minus, Plus } from "lucide-react";
-import { useEffect, useState } from "react";
-import { Product } from "@/types/index.type";
-import { toast } from "sonner";
-import Link from "next/link";
 
 const ProductDetails = ({ paramsId }: { paramsId: string }) => {
+  const { addToCart, existsInCart, removeFromCart } = useCartContext();
+
   const [product, setProduct] = useState<Product | null>(null);
   const [cartQuantity, setCartQuantity] = useState(1);
 
@@ -56,7 +60,7 @@ const ProductDetails = ({ paramsId }: { paramsId: string }) => {
     `rounded-md px-4 py-2 ${
       selectedSize === size
         ? "bg-secondary border-2 border-primary"
-        : "bg-secondary"
+        : "bg-secondary border-2 border-secondary"
     }`;
 
   const handleSelection = (color: string) => {
@@ -69,20 +73,8 @@ const ProductDetails = ({ paramsId }: { paramsId: string }) => {
     } ${bgColor}`;
 
   const handleAddToCart = (item: any) => {
-    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const existingItemIndex = storedCart.findIndex(
-      (cartItem: any) => cartItem.id === item.id,
-    );
+    addToCart(item, cartQuantity);
 
-    if (existingItemIndex !== -1) {
-      storedCart[existingItemIndex].quantity += 1;
-    } else {
-      storedCart.push({ ...item, quantity: 1 });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(storedCart));
-
-    window.dispatchEvent(new Event("cartUpdated"));
     toast.success("Added to cart!");
   };
 
@@ -94,74 +86,79 @@ const ProductDetails = ({ paramsId }: { paramsId: string }) => {
       <div className="flex flex-col gap-6 lg:flex-row">
         {/* Product Images */}
         <div className="relative lg:w-1/3">
-          {/* Custom Slider Buttons */}
-          <SliderArrowBtn
-            direction="left"
-            className="productPrev absolute left-2 top-1/2 z-10 -translate-y-1/2 transform"
-          />
-          <SliderArrowBtn
-            direction="right"
-            className="productNext absolute right-2 top-1/2 z-10 -translate-y-1/2 transform"
-          />
+          <div className="relative max-w-lg">
+            {/* Custom Slider Buttons */}
+            <SliderArrowBtn
+              direction="left"
+              className="productPrev absolute left-2 top-1/2 z-10 -translate-y-1/2 transform"
+            />
+            <SliderArrowBtn
+              direction="right"
+              className="productNext absolute right-2 top-1/2 z-10 -translate-y-1/2 transform"
+            />
 
-          {/* Swiper Slider */}
-          <Swiper
-            modules={[Navigation]}
-            spaceBetween={10}
-            slidesPerView={1}
-            navigation={{
-              prevEl: ".productPrev",
-              nextEl: ".productNext",
-            }}
-            className="rounded-md"
-            breakpoints={{
-              640: { slidesPerView: 1 },
-              1024: { slidesPerView: 1 },
-            }}
-          >
-            <SwiperSlide>
-              <div className="relative aspect-square">
-                <Image
-                  src={product?.img!}
-                  alt="product"
-                  fill
-                  className="h-auto w-full rounded-md bg-secondary"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="relative aspect-square">
-                <Image
-                  src="/products/product_one.png"
-                  alt="product"
-                  fill
-                  className="h-auto w-full rounded-md bg-secondary"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="relative aspect-square">
-                <Image
-                  src="/products/product_two.png"
-                  alt="product"
-                  fill
-                  className="h-auto w-full rounded-md bg-secondary"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="relative aspect-square">
-                <Image
-                  src="/products/product_three.png"
-                  alt="product"
-                  fill
-                  className="h-auto w-full rounded-md bg-secondary"
-                />
-              </div>
-            </SwiperSlide>
-          </Swiper>
+            {/* Swiper Slider */}
+            <Swiper
+              modules={[Navigation, Pagination]}
+              pagination={{
+                type: "fraction",
+              }}
+              spaceBetween={10}
+              slidesPerView={1}
+              navigation={{
+                prevEl: ".productPrev",
+                nextEl: ".productNext",
+              }}
+              className="product-details-slider rounded-md"
+              breakpoints={{
+                640: { slidesPerView: 1 },
+                1024: { slidesPerView: 1 },
+              }}
+            >
+              <SwiperSlide>
+                <div className="relative aspect-square">
+                  <Image
+                    src={product?.img!}
+                    alt="product"
+                    fill
+                    className="h-auto w-full rounded-md bg-secondary"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="relative aspect-square">
+                  <Image
+                    src="/products/product_one.png"
+                    alt="product"
+                    fill
+                    className="h-auto w-full rounded-md bg-secondary"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="relative aspect-square">
+                  <Image
+                    src="/products/product_two.png"
+                    alt="product"
+                    fill
+                    className="h-auto w-full rounded-md bg-secondary"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="relative aspect-square">
+                  <Image
+                    src="/products/product_three.png"
+                    alt="product"
+                    fill
+                    className="h-auto w-full rounded-md bg-secondary"
+                  />
+                </div>
+              </SwiperSlide>
+            </Swiper>
+          </div>
 
-          <div className="my-5 hidden gap-2 lg:flex">
+          <div className="my-5 hidden flex-wrap gap-2 lg:flex">
             <Image
               src="/products/product_one.png"
               alt="product"
@@ -307,17 +304,27 @@ const ProductDetails = ({ paramsId }: { paramsId: string }) => {
             </Link>
 
             <button
-              onClick={() =>
-                handleAddToCart({
-                  id: product?.id,
-                  img: product?.img,
-                  product_name: product?.product_name,
-                  price: product?.price,
-                })
-              }
-              className="w-full rounded border border-primary px-4 py-2 transition-colors hover:bg-primary hover:text-white lg:w-1/2"
+              onClick={() => {
+                if (existsInCart(product?.id!)) {
+                  removeFromCart(product?.id!);
+
+                  toast.info("Removed from cart!");
+                } else {
+                  handleAddToCart({
+                    id: product?.id,
+                    img: product?.img,
+                    product_name: product?.product_name,
+                    price: product?.price,
+                  });
+                }
+              }}
+              className={`w-full rounded border px-4 py-2 transition-colors hover:text-white lg:w-1/2 ${
+                existsInCart(product?.id!)
+                  ? "border-red-500 text-red-500 hover:bg-red-500"
+                  : "border-primary text-primary hover:bg-primary"
+              }`}
             >
-              Add to Cart
+              {existsInCart(product?.id!) ? "Remove from Cart" : "Add to Cart"}
             </button>
           </div>
         </div>

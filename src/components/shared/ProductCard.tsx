@@ -1,24 +1,22 @@
-import { ProductCardProps } from "@/types/index.type";
+import { useCartContext } from "@/context/CartContext";
+import { LocalProduct, ProductCardProps } from "@/types/index.type";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const handleAddToCart = (item: any) => {
-    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const existingItemIndex = storedCart.findIndex(
-      (cartItem: any) => cartItem.id === item.id,
-    );
+  const { addToCart, existsInCart } = useCartContext();
 
-    if (existingItemIndex !== -1) {
-      storedCart[existingItemIndex].quantity += 1;
-    } else {
-      storedCart.push({ ...item, quantity: 1 });
-    }
+  const localProduct: LocalProduct = {
+    id: product.id,
+    img: product.img,
+    product_name: product.product_name,
+    price: product.price,
+    quantity: 1,
+  };
 
-    localStorage.setItem("cart", JSON.stringify(storedCart));
-
-    window.dispatchEvent(new Event("cartUpdated"));
+  const handleAddToCart = () => {
+    addToCart(localProduct, 1);
 
     toast.success("Added to cart!");
   };
@@ -32,7 +30,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
               src={product.img}
               alt={product.product_name}
               fill
-              className="mx-auto h-full w-full object-contain"
+              className="mx-auto h-full w-full object-contain object-bottom"
             />
           </div>
           <div className="mt-4 flex items-center justify-between px-2">
@@ -53,17 +51,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </Link>
 
       <button
-        onClick={() =>
-          handleAddToCart({
-            id: product.id,
-            img: product.img,
-            product_name: product.product_name,
-            price: product.price,
-          })
-        }
-        className="mt-4 w-full rounded border border-primary px-2 py-2 transition-colors hover:bg-primary hover:text-white"
+        onClick={handleAddToCart}
+        className={`mt-4 w-full rounded border px-2 py-2 transition-colors hover:bg-primary hover:text-white disabled:pointer-events-none disabled:opacity-50 ${existsInCart(product.id) ? "border-gray-400" : "border-primary"}`}
+        disabled={existsInCart(product.id)}
       >
-        Add to Cart
+        {existsInCart(product.id) ? "Added to cart" : "Add to cart"}
       </button>
     </div>
   );

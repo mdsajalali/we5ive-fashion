@@ -1,9 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Container from "./Container";
-import Link from "next/link";
+import { useCartContext } from "@/context/CartContext";
 import { ShoppingBag, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import Container from "./Container";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
@@ -13,29 +14,9 @@ const NAV_ITEMS = [
 ];
 
 export default function Navbar() {
+  const { totalCartItems } = useCartContext();
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const [totalQuantity, setTotalQuantity] = useState(0);
-
-  const calculateTotalQuantity = () => {
-    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const total = storedCart.reduce(
-      (sum: number, item: any) => sum + (item.quantity || 1),
-      0,
-    );
-    setTotalQuantity(total);
-  };
-
-  useEffect(() => {
-    calculateTotalQuantity();
-
-    const handleCartUpdate = () => calculateTotalQuantity();
-    window.addEventListener("cartUpdated", handleCartUpdate);
-
-    return () => {
-      window.removeEventListener("cartUpdated", handleCartUpdate);
-    };
-  }, []);
 
   return (
     <nav className="bg-secondary py-3 lg:py-5">
@@ -71,8 +52,8 @@ export default function Navbar() {
           {/* Desktop Navigation Links */}
           <div className="hidden lg:block">
             <ul className="flex items-center gap-5">
-              {NAV_ITEMS.map((item) => (
-                <li key={item.href}>
+              {NAV_ITEMS.map((item, index) => (
+                <li key={index}>
                   <Link
                     href={item.href}
                     className="text-[18px] font-semibold text-[#646464] duration-300 hover:text-primary"
@@ -117,7 +98,7 @@ export default function Navbar() {
               >
                 <ShoppingBag className="text-2xl text-gray-700" />
                 <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-black text-xs text-white">
-                  {totalQuantity}
+                  {totalCartItems}
                 </span>
               </Link>
               <Image
@@ -147,8 +128,8 @@ export default function Navbar() {
               <X className="h-6 w-6" />
             </button>
             <ul className="space-y-4">
-              {NAV_ITEMS.map((item) => (
-                <li key={item.href}>
+              {NAV_ITEMS.map((item, index) => (
+                <li key={index}>
                   <Link
                     onClick={() => setIsSidebarOpen(false)}
                     href={item.href}

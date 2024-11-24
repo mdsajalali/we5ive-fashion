@@ -15,6 +15,10 @@ export interface Product {
   sizes?: string[];
 }
 
+export interface LocalProduct extends Product {
+  quantity: number;
+}
+
 export interface ProductCardProps {
   product: Product;
 }
@@ -28,6 +32,5 @@ export interface ParamsProps {
 
 // Cart Item type
 export interface CartItemProps {
-  product: any;
-  onRemove: any;
+  product: LocalProduct;
 }

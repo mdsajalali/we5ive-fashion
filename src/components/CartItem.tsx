@@ -1,9 +1,18 @@
+"use client";
+
+import { useCartContext } from "@/context/CartContext";
 import { CartItemProps } from "@/types/index.type";
 import { Minus, Plus, X } from "lucide-react";
-import { useState } from "react";
+import { toast } from "sonner";
 
-const CartItem = ({ product, onRemove }: CartItemProps) => {
-  const [cartQuantity, setCartQuantity] = useState(1);
+const CartItem = ({ product }: CartItemProps) => {
+  const { addToCart, removeFromCart } = useCartContext();
+
+  const handleRemoveFromCart = () => {
+    removeFromCart(product.id);
+
+    toast.success("Cart cleared successfully!");
+  };
 
   return (
     <div
@@ -21,29 +30,29 @@ const CartItem = ({ product, onRemove }: CartItemProps) => {
       <p className="w-[120px] text-center font-medium">${product.price}</p>
       <div className="flex w-32 items-center border">
         <button
-          onClick={() =>
-            setCartQuantity((prevQuantity) => Math.max(1, prevQuantity - 1))
-          }
+          onClick={() => {
+            addToCart(product, -1);
+          }}
           className="flex h-[54px] w-[38px] items-center justify-center text-gray-500"
         >
           <Minus className="size-4" />
         </button>
         <span className="block min-w-12 text-center text-lg font-semibold">
-          {cartQuantity}
+          {product.quantity}
         </span>
         <button
-          onClick={() => setCartQuantity((prevQuantity) => prevQuantity + 1)}
+          onClick={() => addToCart(product, 1)}
           className="flex h-[54px] w-[38px] items-center justify-center text-gray-500"
         >
           <Plus className="size-4" />
         </button>
       </div>
       <p className="w-32 text-center font-medium">
-        ${(product.price * cartQuantity).toFixed(2)}
+        ${(product.price * product.quantity).toFixed(2)}
       </p>
       <div className="w-20">
         <button
-          onClick={() => onRemove(product.id)}
+          onClick={handleRemoveFromCart}
           className="mx-auto flex size-9 items-center justify-center rounded-full border duration-300 hover:bg-primary hover:text-white"
         >
           <X className="size-5" />

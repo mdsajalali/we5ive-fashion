@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import Container from "./shared/Container";
-import { IoMdStar } from "react-icons/io";
-import { CiStar } from "react-icons/ci";
 import { ChevronDown } from "lucide-react";
+import { useState } from "react";
+import { CiStar } from "react-icons/ci";
+import { IoMdStar } from "react-icons/io";
+import Container from "./shared/Container";
 
 const Reviews = () => {
   const [activeTab, setActiveTab] = useState("review&rating");
@@ -15,7 +15,7 @@ const Reviews = () => {
       <div className="flex flex-col items-start py-8">
         <div className="w-full">
           {/* Tab Navigation */}
-          <div className="flex justify-between border-b border-gray-300">
+          <div className="flex gap-2 border-b border-gray-300 md:gap-10">
             {["Details", "Review & Rating", "Discussion"].map((tab) => (
               <button
                 key={tab}
