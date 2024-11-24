@@ -24,13 +24,13 @@ const NewCollection = () => {
         autoplay={{ delay: 3000 }}
       >
         <SwiperSlide>
-          <div className="flex flex-col items-center gap-5 py-10 md:flex-row">
+          <div className="flex flex-col items-center gap-5 py-10 md:flex-row md:gap-10">
             <Image
               src="/man.png"
               alt="Men Collection"
               width={621}
               height={566}
-              className="mx-auto w-full max-w-sm md:max-w-md lg:max-w-lg"
+              className="w-full max-w-sm md:max-w-md lg:max-w-lg"
             />
             <div className="text-center md:text-left">
               <h1 className="pb-6 text-2xl font-semibold md:text-4xl lg:text-[48px]">
@@ -47,7 +47,7 @@ const NewCollection = () => {
               alt="Women Collection"
               width={521}
               height={466}
-              className="mx-auto w-full max-w-sm md:max-w-md lg:max-w-lg"
+              className="w-full max-w-sm md:max-w-md lg:max-w-lg"
             />
             <div className="text-center md:text-left">
               <h1 className="pb-6 text-2xl font-semibold md:text-4xl lg:text-[48px]">

@@ -119,40 +119,44 @@ const ProductDetails = ({ paramsId }: { paramsId: string }) => {
             }}
           >
             <SwiperSlide>
-              <Image
-                src={product?.img!}
-                alt="product"
-                width={400}
-                height={400}
-                className="h-auto w-full rounded-md bg-secondary"
-              />
+              <div className="relative size-[450px]">
+                <Image
+                  src={product?.img!}
+                  alt="product"
+                  fill
+                  className="h-auto w-full rounded-md bg-secondary"
+                />
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-              <Image
-                src="/products/product_one.png"
-                alt="product"
-                width={400}
-                height={400}
-                className="h-auto w-full rounded-md bg-secondary"
-              />
+              <div className="relative size-[450px]">
+                <Image
+                  src="/products/product_one.png"
+                  alt="product"
+                  fill
+                  className="h-auto w-full rounded-md bg-secondary"
+                />
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-              <Image
-                src="/products/product_two.png"
-                alt="product"
-                width={400}
-                height={400}
-                className="h-auto w-full rounded-md bg-secondary"
-              />
+              <div className="relative size-[450px]">
+                <Image
+                  src="/products/product_two.png"
+                  alt="product"
+                  fill
+                  className="h-auto w-full rounded-md bg-secondary"
+                />
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-              <Image
-                src="/products/product_three.png"
-                alt="product"
-                width={400}
-                height={400}
-                className="h-auto w-full rounded-md bg-secondary"
-              />
+              <div className="relative size-[450px]">
+                <Image
+                  src="/products/product_three.png"
+                  alt="product"
+                  fill
+                  className="h-auto w-full rounded-md bg-secondary"
+                />
+              </div>
             </SwiperSlide>
           </Swiper>
 
