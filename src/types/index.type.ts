@@ -25,3 +25,9 @@ export interface ParamsProps {
     id: string;
   };
 }
+
+// Cart Item type
+export interface CartItemProps {
+  product: any;
+  onRemove: any;
+}

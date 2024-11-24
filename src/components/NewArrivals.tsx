@@ -8,13 +8,8 @@ import Container from "./shared/Container";
 import { useEffect, useState } from "react";
 import ProductCard from "./shared/ProductCard";
 import Link from "next/link";
+import { Product } from "@/types/index.type";
 
-interface Product {
-  id: number;
-  product_name: string;
-  img: string;
-  price: number;
-}
 const NewArrivals = () => {
   const [products, setProducts] = useState<Product[]>([]);
 

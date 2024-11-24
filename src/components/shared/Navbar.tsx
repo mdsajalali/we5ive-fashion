@@ -27,14 +27,11 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    // Calculate initial quantity
     calculateTotalQuantity();
 
-    // Listen for cart updates
     const handleCartUpdate = () => calculateTotalQuantity();
     window.addEventListener("cartUpdated", handleCartUpdate);
 
-    // Cleanup listener on component unmount
     return () => {
       window.removeEventListener("cartUpdated", handleCartUpdate);
     };

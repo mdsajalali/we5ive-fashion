@@ -4,13 +4,8 @@ import "swiper/css/navigation";
 import { useEffect, useState } from "react";
 import ProductCard from "./shared/ProductCard";
 import Container from "./shared/Container";
+import { Product } from "@/types/index.type";
 
-interface Product {
-  id: number;
-  product_name: string;
-  img: string;
-  price: number;
-}
 const ShopProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
 

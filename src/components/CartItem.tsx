@@ -1,12 +1,8 @@
+import { CartItemProps } from "@/types/index.type";
 import { Minus, Plus, X } from "lucide-react";
 import { useState } from "react";
 
-interface CartItemProps {
-  product: any;
-  onRemove: any;
-}
-
-const CartItem: React.FC<CartItemProps> = ({ product, onRemove }) => {
+const CartItem = ({ product, onRemove }: CartItemProps) => {
   const [cartQuantity, setCartQuantity] = useState(1);
 
   return (
