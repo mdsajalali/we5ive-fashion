@@ -12,14 +12,18 @@ Explore the live project [here](https://we5ive-fashion.netlify.app)
 - **New Arrivals Section**
 - **Summer Products Section**
 - **Products Page**
+- **Shop Products Page Added Skeleton**
 - **Single Product Page**
 - **Add to Cart / Remove Cart / Clear Cart Functionality**
 - **Fully Responsive For All Device**
+- **Context API**
 
 ## Tech Stack
 
 - Next.js
 - TailwindCSS
+- Swiper.js
+- Sonner
 
 ### 💻 Getting Started
 
