@@ -38,13 +38,13 @@ git clone https://github.com/mdsajalali/we5ive-fashion.git
 
 ```
 cd we5ive-fashion
-npm install
+pnpm install
 ```
 
 3. Run the development server:
 
 ```
-npm run dev
+pnpm dev
 ```
 
 ### Figma file
