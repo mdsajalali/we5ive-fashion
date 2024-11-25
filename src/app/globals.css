@@ -5,3 +5,7 @@
 .product-details-slider .swiper-pagination-fraction {
   @apply left-auto right-2 block w-16 rounded-full bg-[#e0dcf8] px-3 py-2 text-[#1d1d1d] lg:hidden;
 }
+
+.swiper-pagination-bullet {
+  @apply !h-2 !w-6 !rounded-md !bg-primary/80;
+}

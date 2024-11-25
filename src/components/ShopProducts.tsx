@@ -39,17 +39,29 @@ const ShopProducts = () => {
         Products
       </h3>
 
-      {loading ? (
-        <div className="flex items-center justify-center py-10">
-          <div className="h-12 w-12 animate-spin rounded-full border-4 border-t-4 border-gray-200" />
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 gap-5 pb-20 pt-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      )}
+      <div className="grid grid-cols-1 gap-5 pb-20 pt-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {loading
+          ? [...Array(10)].map((_, index) => (
+              <div
+                key={index}
+                className="flex h-full w-full flex-col items-center gap-4 rounded-md bg-gray-100 p-4 shadow-md"
+              >
+                <div className="h-[280px] w-full rounded-lg bg-gray-300"></div>
+
+                <div className="flex w-full flex-col gap-3">
+                  <div className="flex justify-between">
+                    <div className="h-4 w-1/3 rounded-sm bg-gray-300"></div>
+                    <div className="h-4 w-1/4 rounded-sm bg-gray-300"></div>
+                  </div>
+
+                  <div className="mx-auto h-8 w-3/4 rounded-sm bg-gray-300"></div>
+                </div>
+              </div>
+            ))
+          : products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+      </div>
     </Container>
   );
 };
