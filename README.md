@@ -24,6 +24,7 @@ Explore the live project [here](https://we5ive-fashion.netlify.app)
 - TailwindCSS
 - Swiper.js
 - Sonner
+- LocalStorage (for cart functionality)
 
 ### 💻 Getting Started
 

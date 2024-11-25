@@ -2,6 +2,8 @@ import { useCartContext } from "@/context/CartContext";
 import { LocalProduct, ProductCardProps } from "@/types/index.type";
 import Image from "next/image";
 import Link from "next/link";
+import { CiStar } from "react-icons/ci";
+import { IoMdStar } from "react-icons/io";
 import { toast } from "sonner";
 
 const ProductCard = ({ product }: ProductCardProps) => {
@@ -33,6 +35,16 @@ const ProductCard = ({ product }: ProductCardProps) => {
               className="mx-auto h-full w-full object-contain object-bottom"
             />
           </div>
+          {product?.up_to && (
+            <div className="flex items-center pt-4">
+              <IoMdStar size={22} className="text-[#FFCF11]" />
+              <IoMdStar size={22} className="text-[#FFCF11]" />
+              <IoMdStar size={22} className="text-[#FFCF11]" />
+              <IoMdStar size={22} className="text-[#FFCF11]" />
+              <CiStar size={22} className="text-[#FFCF11]" />
+              <span className="ml-2">({product.reviews})</span>
+            </div>
+          )}
           <div className="mt-4 flex items-center justify-between px-2">
             <h1 className="text-[16px] font-semibold text-gray-600">
               {product.product_name}

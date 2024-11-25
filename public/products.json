@@ -33,6 +33,14 @@
   },
   {
     "id": 5,
+    "img": "/products/hoodie.png",
+    "product_name": "Hoodie",
+    "price": "500",
+    "reviews": 220,
+    "sizes": ["S", "M", "XL"]
+  },
+  {
+    "id": 6,
     "img": "/products/girl_clothes.png",
     "product_name": "Girl Clothes",
     "price": "9300",
@@ -41,7 +49,7 @@
     "sizes": ["S"]
   },
   {
-    "id": 6,
+    "id": 7,
     "img": "/products/shirt.png",
     "product_name": "Shirt",
     "price": "6500",
@@ -50,7 +58,7 @@
     "sizes": ["S", "M"]
   },
   {
-    "id": 7,
+    "id": 8,
     "img": "/products/royal_saree.png",
     "product_name": "Saree",
     "price": "63000",
@@ -59,7 +67,7 @@
     "sizes": ["S", "M", "L", "XL"]
   },
   {
-    "id": 8,
+    "id": 9,
     "img": "/products/shirt_boy.png",
     "product_name": "Boys Shirt",
     "price": "22300",
@@ -68,19 +76,21 @@
     "sizes": ["S", "M", "L"]
   },
   {
-    "id": 9,
-    "img": "/products/pant.png",
-    "product_name": "Pant",
-    "price": "3000",
-    "reviews": 5,
-    "sizes": ["S", "M", "L", "XL"]
+    "id": 10,
+    "img": "/products/shirt.png",
+    "product_name": "Shirt",
+    "price": "6500",
+    "up_to": "60",
+    "reviews": 620,
+    "sizes": ["S", "M"]
   },
   {
-    "id": 10,
-    "img": "/products/jacket.png",
-    "product_name": "Jacket",
-    "price": "42300",
-    "reviews": 90,
-    "sizes": ["S", "M"]
+    "id": 11,
+    "img": "/products/royal_saree.png",
+    "product_name": "Saree",
+    "price": "63000",
+    "up_to": "10",
+    "reviews": 59,
+    "sizes": ["S", "M", "L", "XL"]
   }
 ]

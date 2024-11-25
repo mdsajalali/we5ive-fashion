@@ -5,15 +5,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Container from "./Container";
+import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Shop", href: "/shops" },
-  { label: "Deals", href: "/" },
-  { label: "What's New", href: "/" },
+  { label: "Deals", href: "/#" },
+  { label: "What's New", href: "/#" },
 ];
 
 export default function Navbar() {
+  const currentPath = usePathname();
   const { totalCartItems } = useCartContext();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -56,7 +58,9 @@ export default function Navbar() {
                 <li key={index}>
                   <Link
                     href={item.href}
-                    className="text-[18px] font-semibold text-[#646464] duration-300 hover:text-primary"
+                    className={`text-[18px] font-semibold duration-300 ${
+                      currentPath === item.href ? "text-primary" : ""
+                    } hover:text-primary`}
                   >
                     {item.label}
                   </Link>

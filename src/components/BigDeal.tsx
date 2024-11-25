@@ -11,6 +11,7 @@ export default function BigDeal() {
             <h1 className="text-xl font-bold md:text-2xl">
               <i className="text-primary">Big Deal</i>
             </h1>
+
             <h2 className="pb-6 pt-2 text-3xl font-semibold md:text-4xl md:text-[48px]">
               <span className="text-primary">30%</span> Off for New Customers
             </h2>
